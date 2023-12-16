@@ -1,5 +1,7 @@
 import LandingPage from "./LandingPage"
+import TechPage from "./TechPage"
 
 export {
-    LandingPage
+    LandingPage,
+    TechPage
 }

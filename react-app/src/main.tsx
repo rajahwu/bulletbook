@@ -7,16 +7,21 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import './index.css'
-import { LandingPage } from './pages'
+import { LandingPage, TechPage } from './pages'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route 
       path="/"
       element={<LandingPage />}
-    />
+      >
+      <Route 
+      path="/technologies"
+      element={<TechPage />}
+      />
+      </Route>
   )
-)
+);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
