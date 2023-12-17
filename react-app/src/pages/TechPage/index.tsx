@@ -34,7 +34,8 @@ const TechGroupCard = ({technologies} : {technologies: Technology[]}) => {
 }
 
 export default function Page() {
-    const { technologies }  = useLoaderData() as TechData;
+    const  { technologies }  = useLoaderData() as { technologies: TechData };
+    console.log(technologies)
     return (
             <TechPageLayout>
                 {technologies["TECH_CATEGORIES"]?.map((techCategory: string, i: number) => {
