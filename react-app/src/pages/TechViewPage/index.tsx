@@ -1,5 +1,5 @@
-import { Link, useLoaderData } from 'react-router-dom';
-import { type Technology } from '../lib/techology.types.ts'
+// import { Link, useLoaderData } from 'react-router-dom';
+// import { type Technology } from '../lib/technology.types.ts'
 import { getTechnologies } from '../../data/technologies.ts'
 // import { Link, useLoaderData } from 'react-router-dom'
 

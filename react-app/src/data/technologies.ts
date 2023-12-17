@@ -99,9 +99,10 @@ const TECHNOLOGIES = [
     ...dev_team
 ] as Technology[];
 
-const getTechnologies = () => {return {
-    TECHNOLOGIES,
-    TECH_CATEGORIES
-}};
+const getTechnologies = () => { 
+    return {
+        TECHNOLOGIES,
+        TECH_CATEGORIES
+    }};
 
 export { TECHNOLOGIES, getTechnologies }
