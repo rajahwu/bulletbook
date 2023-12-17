@@ -6,6 +6,7 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom';
+
 import './index.css'
 import { Root } from "./layouts"
 import { LandingPage, TechPage, ErrorPage, TechViewPage } from './pages'
