@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import './index.css'
 import { Root } from "./layouts"
-import { LandingPage, TechPage, ErrorPage } from './pages'
+import { LandingPage, TechPage, ErrorPage, TechViewPage } from './pages'
 import { loader as techLoader } from './pages/TechPage'
 
 const router = createBrowserRouter(
@@ -27,6 +27,13 @@ const router = createBrowserRouter(
     <Route 
     path="/technologies"
     element={<TechPage />} 
+    errorElement={<ErrorPage />}
+    loader={techLoader}
+    />
+
+    <Route
+    path="/technologies/*"
+    element={<TechViewPage />} 
     errorElement={<ErrorPage />}
     loader={techLoader}
     />

@@ -1,7 +1,7 @@
 import TechPageLayout from './Layout';
 import { type Technology } from '../lib/techology.types.ts'
 import { getTechnologies } from '../../data/technologies.ts'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 
 interface TechGroup {
     groupName: string,
@@ -19,19 +19,22 @@ const TechCard = ({technology} : {technology: Technology}) => (
     </div>
 )
 
-const TechGroupCard = ({technologies} : {technologies: Technology[]}) => (
-    <div className="p-5 m-2 outline-black bg-black text-white uppercase text-xl">
-        <h2 className="text-teal-500">{technologies[0] && technologies[0].category}</h2>
+const TechGroupCard = ({technologies} : {technologies: Technology[]}) => {
+
+    const category = technologies[0]?.category || "";
+    return (
+        <Link to={`/technologies/${category}`} className="p-5 m-2 outline-black bg-black text-white uppercase text-xl">
+        <h2 className="text-teal-500">{category}</h2>
         {technologies.map(technology => {
             return <TechCard technology={technology} key={technology.name} />
         }
         )}
-    </div>
+    </Link>
 )
+}
 
 export default function Page({techgroups} : {techGroups: TechGroup[]}) {
     const { technologies } = useLoaderData()
-    console.log(technologies)
     return (
             <TechPageLayout>
                 {technologies["TECH_CATEGORIES"]?.map((techCategory, i) => {
