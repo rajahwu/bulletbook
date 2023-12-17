@@ -1,11 +1,11 @@
 import TechPageLayout from './Layout';
-import { type Technology } from '../lib/techology.types.ts'
+import { type Technology } from '../../lib/technology.types.ts'
 import { getTechnologies } from '../../data/technologies.ts'
 import { Link, useLoaderData } from 'react-router-dom'
 
-interface TechGroup {
-    groupName: string,
-    technologies: string[]
+interface TechData {
+    TECH_CATEGORIES: string[]
+    TECHNOLOGIES: Technology[]
 }
 
 export async function loader() {
@@ -33,21 +33,21 @@ const TechGroupCard = ({technologies} : {technologies: Technology[]}) => {
 )
 }
 
-export default function Page({techgroups} : {techGroups: TechGroup[]}) {
-    const { technologies } = useLoaderData()
+export default function Page() {
+    const  { technologies }  = useLoaderData() as { technologies: TechData };
+    console.log(technologies)
     return (
             <TechPageLayout>
-                {technologies["TECH_CATEGORIES"]?.map((techCategory, i) => {
-        const techGroupArea = technologies["TECHNOLOGIES"].filter(
-          (tech) => tech.category === techCategory
-        );
-        return (
-          <TechGroupCard
-            technologies={techGroupArea}
-            key={techCategory} 
-          />
-        );
-      })}
+                {technologies["TECH_CATEGORIES"]?.map((techCategory: string, i: number) => {
+                    const techGroupArea = technologies["TECHNOLOGIES"]
+                    .filter((tech: Technology) => tech.category === techCategory);
+                        return (
+                            <TechGroupCard
+                            technologies={techGroupArea}
+                            key={techCategory[i] + i} 
+                            />
+                            );
+                        })}
             </TechPageLayout>
     )
 }

@@ -1,7 +1,8 @@
+import { Session } from '@supabase/supabase-js'
 import { Link } from "react-router-dom"
 import SignOutButton from "../SignOutButton"
 
-export default function SiteHeader({ session }) {
+export default function SiteHeader({ session } : { session: Session | null }) {
     return (
         <div className="flex justify-between">
             <ul>
