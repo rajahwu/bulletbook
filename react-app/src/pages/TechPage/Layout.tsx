@@ -4,7 +4,7 @@ type Props = {
 
 export default function Layout({children }: Props) {
     return (
-        <div>
+        <div className="lg:grid lg:grid-rows-3 lg:grid-cols-3 flex flex-col">
             { children }
         </div>
     )
