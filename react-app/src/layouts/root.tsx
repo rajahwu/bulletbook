@@ -31,9 +31,11 @@ export default function Root({ children }: Props) {
 
     return (
         <div>
-            <SiteHeader />
+            <SiteHeader session={session} />
                  { session ? <Outlet /> : <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />}
             <SiteFooter />
         </div>
     )
 }
+
+export { supabase }
