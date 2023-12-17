@@ -8,21 +8,28 @@ import {
 } from 'react-router-dom';
 import './index.css'
 import { Root } from "./layouts"
-import { LandingPage, TechPage } from './pages'
+import { LandingPage, TechPage, ErrorPage } from './pages'
+import { loader as techLoader } from './pages/TechPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route
   path="/"
   element={<Root />}
+  errorElement={<ErrorPage />}
   >
     <Route 
     path="/home"
-    element={<LandingPage />} />
+    element={<LandingPage />} 
+    errorElement={<ErrorPage />}
+    />
 
     <Route 
     path="/technologies"
-    element={<TechPage />} />
+    element={<TechPage />} 
+    errorElement={<ErrorPage />}
+    loader={techLoader}
+    />
 
   <Route errorElement={<div>Page Not Found</div>} />
 
