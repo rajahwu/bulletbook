@@ -7,7 +7,7 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 
-import { TechLoader } from './data/router/loaders';
+import { TechLoader, TechViewLoader } from './data/router/loaders';
 import './index.css';
 import { Root } from "./layouts";
 import { ErrorPage, LandingPage, TechPage, TechViewPage } from './pages';
@@ -36,7 +36,7 @@ const router = createBrowserRouter(
     path="/technologies/*"
     element={<TechViewPage />} 
     errorElement={<ErrorPage />}
-    loader={TechLoader}
+    loader={TechViewLoader}
     />
 
   <Route errorElement={<div>Page Not Found</div>} />
