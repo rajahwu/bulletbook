@@ -22,7 +22,6 @@ const TechListItem = ({ technology }: { technology: Technology }) => (
 
 const TechGroupList = ({ technologies }: { technologies: Technology[] }) => {
   const category = technologies[0]?.category || "";
-
   return (
     <NavLink to={`/technologies/${category}`}>
       <h2 className="text-teal-500">{category}</h2>
@@ -34,12 +33,14 @@ const TechGroupList = ({ technologies }: { technologies: Technology[] }) => {
 };
 
 const ProjectListItem = ({ project }: { project: Project }) => (
-  <div>
-    <p>{project.name}</p>
-    {project.bullets.map((bullet) => (
-      <ul>
-        <li>{bullet.title}</li>
-        <li>{bullet.text}</li>
+  <div className="p-3 m-2">
+    <p>Name: {project.name}</p>
+    {project.bullets.map((bullet, i) => (
+      <ul key={i}>
+        <li>
+          <p>{bullet.title}</p>
+          <p>{bullet.text}</p>
+        </li>
       </ul>
     ))}
   </div>
@@ -49,11 +50,9 @@ export default function Page() {
   const { technologies } = useLoaderData() as { technologies: TechData };
   const projects = getProjects();
 
-  console.log(projects);
-
   return (
     <TechViewLayout>
-      <div id="techview-left">
+      <div id="techview-left" className="ml-2 mr-9">
         {technologies["TECH_CATEGORIES"]?.map(
           (techCategory: string, i: number) => {
             const techGroupArea = technologies["TECHNOLOGIES"].filter(
@@ -70,14 +69,14 @@ export default function Page() {
       </div>
 
       <div id="techview-right">
-        <div id="tech-brief" className="flex">
+        <div id="tech-brief" className="flex p-5 border">
           <div>Tech Image</div>
           <div>Tech Brief</div>
         </div>
 
         <div id="tech-projects">
           <h2>Projects</h2>
-          <div id="projects">
+          <div id="projects" className="p-5 border m-2">
             {projects["PROJECTS"]?.map((project) => (
               <ProjectListItem project={project} key={project.name} />
             ))}
