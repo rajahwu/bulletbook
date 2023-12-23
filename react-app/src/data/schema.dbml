@@ -1,0 +1,60 @@
+Project BulletBook {
+    database_type: 'PostgreSQL'
+    Note: '''
+    # Project Tracking Database
+    '''
+}
+
+Table users {
+    id int [pk, increment]
+    username varchar
+    email varchar
+}
+
+Table technologies {
+    id int [pk, increment]
+    name varchar
+    icon varchar
+    description text
+    category varchar
+}
+
+Table tech_references {
+    id int [pk, increment]
+    technology_id int [ref: > technologies.id]
+    title varchar
+    url varchar
+}
+
+Table projects {
+    id int [pk, increment]
+    user_id int [ref: > users.id]
+    name varchar
+    description text
+}
+
+Table project_images {
+    id int [pk, increment]
+    project_id int [ref: > projects.id]
+    url varchar
+}
+
+Table project_urls {
+    id int [pk, increment]
+    project_id int [ref: > projects.id]
+    live varchar
+    github varchar
+}
+
+Table projcet_bullets {
+    id int [pk, increment]
+    project_id int [ref: > projects.id]
+    title varchar
+    text varchar
+}
+
+Table bullet_techs {
+    id int [pk, increment]
+    bullet_id int [ref: > projcet_bullets.id]
+    tech_id int [ref: > technologies.id]
+}
