@@ -5,7 +5,7 @@ Project BulletBook {
     '''
 }
 
-Table users {
+Table profiles as users {
     id int [pk, increment]
     username varchar
     email varchar
