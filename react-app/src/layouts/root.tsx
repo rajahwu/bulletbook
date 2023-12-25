@@ -10,6 +10,7 @@ const supabase = createClient<Database>(import.meta.env.VITE_SUPABASE_URL, impor
 
 export default function Root() {
     const [session, setSession] = useState<Session | null>(null)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -24,6 +25,21 @@ export default function Root() {
   
         return () => subscription.unsubscribe()
       }, [])
+
+      useEffect(() => {
+      supabase.auth.getUser()
+        .then(({data}) => setUser(data.user))
+        console.log(user)
+
+      if(user?.id) {
+        supabase.from('profiles').select('username', 'email').eq('id', user?.id)
+        .then(({ data }) => {
+          if(!data[0]) console.log('redirect to create profile')
+        })
+      }
+      }, [user?.id])
+
+      
 
     return (
         <div>
