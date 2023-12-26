@@ -6,21 +6,8 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { ProfilePage } from '../pages'
 import { Database } from "../../database.types"
+import { Profile, User } from "../lib/user.types.ts"
 
-interface Profile {
-    email?: string | null
-    id?: string
-    username: string | null
-}
-
-interface User {
-    email: string | null;
-    id: string;
-    instance_id?: string;
-    aud: string;
-    role: string;
-  }
-  
 
 const supabase = createClient<Database>(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
 
@@ -48,7 +35,7 @@ export default function Root() {
               if (data.user?.id) {
                   const { data: profileData } = await supabase
                       .from('profiles')
-                      .select(['username', 'email'])
+                      .select()
                       .eq('id', data.user.id);
   
                   if (profileData?.length) {
