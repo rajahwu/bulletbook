@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {
-  createRoutesFromElements,
-  createBrowserRouter,
   Route,
-  RouterProvider
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements
 } from 'react-router-dom';
 
-import './index.css'
-import { Root } from "./layouts"
-import { LandingPage, TechPage, ErrorPage, TechViewPage } from './pages'
-import { loader as techLoader } from './pages/TechPage'
+import { TechLoader, TechViewLoader } from './data/router/loaders';
+import './index.css';
+import { Root } from "./layouts";
+import { ErrorPage, LandingPage, ProfilePage, TechPage, TechViewPage } from './pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,17 +26,23 @@ const router = createBrowserRouter(
     />
 
     <Route 
+    path="/profile"
+    element={<ProfilePage />}
+    errorElement={<ErrorPage />}
+    />
+
+    <Route 
     path="/technologies"
     element={<TechPage />} 
     errorElement={<ErrorPage />}
-    loader={techLoader}
+    loader={TechLoader}
     />
 
     <Route
     path="/technologies/*"
     element={<TechViewPage />} 
     errorElement={<ErrorPage />}
-    loader={techLoader}
+    loader={TechViewLoader}
     />
 
   <Route errorElement={<div>Page Not Found</div>} />

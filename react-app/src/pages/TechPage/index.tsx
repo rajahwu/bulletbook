@@ -1,7 +1,7 @@
+import { Link, useLoaderData } from 'react-router-dom';
+import { getTechnologies } from '../../data/technologies.ts';
+import { type Technology } from '../../lib/technology.types.ts';
 import TechPageLayout from './Layout';
-import { type Technology } from '../../lib/technology.types.ts'
-import { getTechnologies } from '../../data/technologies.ts'
-import { Link, useLoaderData } from 'react-router-dom'
 
 interface TechData {
     TECH_CATEGORIES: string[]
@@ -35,7 +35,7 @@ const TechGroupCard = ({technologies} : {technologies: Technology[]}) => {
 
 export default function Page() {
     const  { technologies }  = useLoaderData() as { technologies: TechData };
-    console.log(technologies)
+    // console.log(technologies)
     return (
             <TechPageLayout>
                 {technologies["TECH_CATEGORIES"]?.map((techCategory: string, i: number) => {
