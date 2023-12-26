@@ -10,7 +10,7 @@ import {
 import { TechLoader, TechViewLoader } from './data/router/loaders';
 import './index.css';
 import { Root } from "./layouts";
-import { ErrorPage, LandingPage, TechPage, TechViewPage } from './pages';
+import { ErrorPage, LandingPage, ProfilePage, TechPage, TechViewPage } from './pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +22,12 @@ const router = createBrowserRouter(
     <Route 
     path="/home"
     element={<LandingPage />} 
+    errorElement={<ErrorPage />}
+    />
+
+    <Route 
+    path="/profile"
+    element={<ProfilePage />}
     errorElement={<ErrorPage />}
     />
 
