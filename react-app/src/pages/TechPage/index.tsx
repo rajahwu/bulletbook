@@ -1,16 +1,10 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { getTechnologies } from "../../data/technologies.ts";
 import { type Technology } from "../../lib/technology.types.ts";
 import TechPageLayout from "./Layout";
 
 interface TechData {
   TECH_CATEGORIES: string[];
   TECHNOLOGIES: Technology[];
-}
-
-export async function loader() {
-  const technologies = await getTechnologies();
-  return { technologies };
 }
 
 const TechCard = ({ technology }: { technology: Technology }) => (
@@ -35,8 +29,7 @@ const TechGroupCard = ({ technologies }: { technologies: Technology[] }) => {
 };
 
 export default function Page() {
-  const { technologies } = useLoaderData() as { technologies: TechData };
-  // console.log(technologies)
+  const technologies = useLoaderData() as { technologies: TechData };
   return (
     <TechPageLayout>
       {technologies["TECH_CATEGORIES"]?.map(
@@ -47,7 +40,7 @@ export default function Page() {
           return (
             <TechGroupCard
               technologies={techGroupArea}
-              key={techCategory[i] + i}
+              key={techCategory[i] + techCategory.length}
             />
           );
         }

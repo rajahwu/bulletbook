@@ -12,11 +12,6 @@ interface TechData {
   TECHNOLOGIES: Technology[];
 }
 
-// interface ProjectData {
-//   projects: Project[];
-//   technologies: TechData;
-// }
-
 const TechListItem = ({ technology }: { technology: Technology }) => (
   <div>
     <NavLink to={`/technologies/${technology.category}/${technology.name}`}>
@@ -31,7 +26,7 @@ const TechGroupList = ({ technologies }: { technologies: Technology[] }) => {
     <NavLink to={`/technologies/${category}`}>
       <h2 className="text-teal-500">{category}</h2>
       {technologies.map((technology) => (
-        <TechListItem technology={technology} key={technology.name} />
+        <TechListItem technology={technology} key={technology.id} />
       ))}
     </NavLink>
   );

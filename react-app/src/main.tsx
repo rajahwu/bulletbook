@@ -12,6 +12,7 @@ import './index.css';
 import { Root } from "./layouts";
 import { ErrorPage, LandingPage, ProfilePage, TechPage, TechViewPage } from './pages';
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route

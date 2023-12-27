@@ -1,5 +1,4 @@
-import { getProjects } from "../../projects";
-import { getTechnologies } from "../../technologies";
+import { getProjects, getTechnologies } from "../../fetchers";
 
 export async function loader() {
   const technologies = await getTechnologies();
