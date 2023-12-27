@@ -1,6 +1,6 @@
 import { Session } from "@supabase/supabase-js";
 import { Link } from "react-router-dom";
-import SignOutButton from "../SignOutButton";
+import ProfileDropdown from "../ProfileDropdown";
 
 export default function SiteHeader({ session }: { session: Session | null }) {
   return (
@@ -9,7 +9,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
         <Link to="/home">Home</Link>
         <Link to="/technologies">Technologies</Link>
       </ul>
-      {session && <SignOutButton />}
+      {session && <ProfileDropdown />}
     </div>
   );
 }

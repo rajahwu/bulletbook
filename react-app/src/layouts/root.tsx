@@ -67,11 +67,7 @@ export default function Root() {
   return (
     <div>
       <SiteHeader session={session} />
-      {session && profile ? (
-        <Outlet />
-      ) : (
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
-      )}
+      {session ? <Outlet /> : <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />}
       <SiteFooter />
     </div>
   );
