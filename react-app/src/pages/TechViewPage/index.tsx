@@ -1,7 +1,10 @@
 import { NavLink, useLoaderData, useLocation } from "react-router-dom";
 import { getProjects } from "../../data/projects.ts";
-import { TECH_CATEGORIE_IMAGE_MAP, TECH_IMAGE_MAP } from "../../data/techImageMap.ts";
-import { Technology, Project, Bullet } from "../../lib/technology.types.ts"
+import {
+  TECH_CATEGORIE_IMAGE_MAP,
+  TECH_IMAGE_MAP,
+} from "../../data/techImageMap.ts";
+import { Bullet, Project, Technology } from "../../lib/technology.types.ts";
 import TechViewLayout from "./Layout.tsx";
 
 interface TechData {
@@ -45,10 +48,11 @@ const TechCard = () => {
   const { technologies } = useLoaderData() as { technologies: TechData };
   // console.log(technologies);
 
-  const [tech] = currentTech ? technologies["TECHNOLOGIES"].filter(
-    (tech: Technology) => tech.name === currentTech
-  ) : [];
-
+  const [tech] = currentTech
+    ? technologies["TECHNOLOGIES"].filter(
+        (tech: Technology) => tech.name === currentTech
+      )
+    : [];
 
   return (
     <div id="tech-brief" className="flex flex-col p-5 border">
@@ -57,7 +61,13 @@ const TechCard = () => {
         <p>{tech?.category}</p>
       </div>
       <div className="flex">
-      <img src={(currentTech ? imageMap[currentTech as keyof typeof imageMap] : imageMap[currentCategory as keyof typeof imageMap]) || ''} />
+        <img
+          src={
+            (currentTech
+              ? imageMap[currentTech as keyof typeof imageMap]
+              : imageMap[currentCategory as keyof typeof imageMap]) || ""
+          }
+        />
         <div>{tech?.description}</div>
       </div>
     </div>
@@ -105,7 +115,7 @@ export default function Page() {
 
         <div id="tech-projects">
           <h2>Projects</h2>
-          <div id="projects" className="p-5 border m-2">
+          <div id="projects" className="p-5 m-2 border">
             {projects["PROJECTS"]?.map((project) => (
               <ProjectListItem project={project} key={project.name} />
             ))}

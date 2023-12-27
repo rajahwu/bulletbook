@@ -3,11 +3,7 @@ interface TechViewPageLayoutProps {
 }
 
 const Layout: React.FC<TechViewPageLayoutProps> = ({ children }) => {
-  return (
-      <div className="flex">
-          { children }
-      </div>
-  )
-}
+  return <div className="flex">{children}</div>;
+};
 
-export default Layout
+export default Layout;

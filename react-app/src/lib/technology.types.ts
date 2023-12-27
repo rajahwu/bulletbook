@@ -11,8 +11,8 @@ interface ResourceURL {
 interface Reference {
     title: string;
     url: string;
-  }
-  
+}
+
 
 interface Technology {
     id?: string
