@@ -16,14 +16,14 @@ const TechCard = ({ technology }: { technology: Technology }) => (
 const TechGroupCard = ({ technologies }: { technologies: Technology[] }) => {
   const category = technologies[0]?.category || "";
   return (
-    <div className="p-5 m-2 text-xl text-white uppercase bg-black outline-black">
-      <Link to={`/technologies/${category}`} className="text-teal-500">
+    <Link to={`/technologies/${category}`}  className="p-5 m-2 text-xl text-white uppercase bg-black outline-black">
+      <div className="text-teal-500">
         {category}
-      </Link>
+      </div>
       {technologies.map((technology) => {
         return <TechCard technology={technology} key={technology.name} />;
       })}
-    </div>
+    </Link>
   );
 };
 

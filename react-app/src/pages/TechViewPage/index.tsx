@@ -41,7 +41,6 @@ const TechCard = () => {
   const imageMap = currentTech ? TECH_IMAGE_MAP : TECH_CATEGORIE_IMAGE_MAP;
 
   const { technologies } = useLoaderData() as { technologies: TechData };
-  // console.log(technologies);
 
   const [tech] = currentTech
     ? technologies["TECHNOLOGIES"].filter(
@@ -98,7 +97,7 @@ export default function Page() {
             return (
               <TechGroupList
                 technologies={techGroupArea}
-                key={techCategory[i] + i}
+                key={i}
               />
             );
           }
