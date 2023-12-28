@@ -1,16 +1,11 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { Session, createClient } from "@supabase/supabase-js";
+import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Database } from "../../database.types";
 import { SiteFooter, SiteHeader } from "../components";
+import supabase from "../data/database.ts";
 import { Profile, User } from "../lib/user.types.ts";
-
-const supabase = createClient<Database>(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
-);
 
 export default function Root() {
   const [session, setSession] = useState<Session | null>(null);

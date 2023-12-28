@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
+  LoaderFunctionArgs,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -8,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import { ProfileAction } from './data/router/actions';
-import { TechLoader, TechViewLoader } from './data/router/loaders';
+import { ProfileLoader, TechLoader, TechViewLoader } from './data/router/loaders';
 import './index.css';
 import { Root } from "./layouts";
 import { ErrorPage, LandingPage, ProfilePage, TechPage, TechViewPage } from './pages';
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
     path="/profile"
     element={<ProfilePage />}
     errorElement={<ErrorPage />}
+    loader={(args: LoaderFunctionArgs<{ id: string }>) => ProfileLoader({ id: args.id })}
     action={ProfileAction}
     />
 

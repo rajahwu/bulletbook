@@ -10,10 +10,10 @@ export default async function action({ request, params }) {
       }
       case "PUT": {
         console.log("PUT");
-        return () => console.log("PUT");
+        return () => console.log("PUT" + params.id);
       }
       case "DELETE": {
-        return () => console.log("DELETE");
+        return () => console.log("DELETE " + params.id);
       }
       default: {
         throw new Response("", { status: 405 });
