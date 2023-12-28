@@ -1,5 +1,5 @@
 import supabase from "../../database";
-import { createProfile } from "../../fetchers";
+import { createProfile, updateProfile } from "../../fetchers";
 
 export default async function action({ request, params }) {
   const user = await supabase.auth.getUser();
@@ -11,16 +11,13 @@ export default async function action({ request, params }) {
         const formData = await request.formData();
         const username = formData.get("username");
         const email = formData.get("email");
-        return createProfile({ username, email });
+        return createProfile({ username, email }) ?? null;
       }
       case "PUT": {
         const formData = await request.formData();
         const username = formData.get("username");
         const email = formData.get("email");
-        return supabase
-          .from("profiles")
-          .update({ username, email })
-          .eq("id", user?.data?.user?.id ?? "");
+        return updateProfile({username, email}) ?? null;
       }
       case "DELETE": {
         return () => console.log("DELETE " + params.id);
