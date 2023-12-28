@@ -7,6 +7,7 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 
+import { ProfileAction } from './data/router/actions';
 import { TechLoader, TechViewLoader } from './data/router/loaders';
 import './index.css';
 import { Root } from "./layouts";
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
     path="/profile"
     element={<ProfilePage />}
     errorElement={<ErrorPage />}
+    action={ProfileAction}
     />
 
     <Route 
