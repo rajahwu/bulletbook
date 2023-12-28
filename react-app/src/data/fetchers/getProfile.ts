@@ -16,6 +16,6 @@ export default async function getProfile() {
     return [];
   }
   if (data) {
-    return data[0];
+    return data[0] ?? null;
   }
 }

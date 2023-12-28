@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 import supabase from "../../data/database.ts";
+import { Profile } from "../../lib/user.types.ts";
 
 export default function ProfilePage() {
   const [session, setSession] = useState<Session | null>(null);
-  const profile = useLoaderData<Profile | null>(session?.user);
+  const profile = useLoaderData() as Profile;
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -16,8 +17,8 @@ export default function ProfilePage() {
     fetchSession();
   }, []);
 
-  console.log(session?.user);
-  console.log("profile", profile);
+  // console.log(session?.user);
+  // console.log("profile", profile);
 
   return (
     <div className="m-5">
