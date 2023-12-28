@@ -16,20 +16,19 @@ const TechCard = ({ technology }: { technology: Technology }) => (
 const TechGroupCard = ({ technologies }: { technologies: Technology[] }) => {
   const category = technologies[0]?.category || "";
   return (
-    <Link
-      to={`/technologies/${category}`}
-      className="p-5 m-2 text-xl text-white uppercase bg-black outline-black"
-    >
-      <h2 className="text-teal-500">{category}</h2>
+    <div className="p-5 m-2 text-xl text-white uppercase bg-black outline-black">
+      <Link to={`/technologies/${category}`} className="text-teal-500">
+        {category}
+      </Link>
       {technologies.map((technology) => {
         return <TechCard technology={technology} key={technology.name} />;
       })}
-    </Link>
+    </div>
   );
 };
 
 export default function Page() {
-  const technologies = useLoaderData() as { technologies: TechData };
+  const technologies = useLoaderData() as TechData;
   return (
     <TechPageLayout>
       {technologies["TECH_CATEGORIES"]?.map(
@@ -40,7 +39,7 @@ export default function Page() {
           return (
             <TechGroupCard
               technologies={techGroupArea}
-              key={techCategory[i] + techCategory.length}
+              key={techCategory.concat(i.toString())}
             />
           );
         }

@@ -23,12 +23,12 @@ const TechListItem = ({ technology }: { technology: Technology }) => (
 const TechGroupList = ({ technologies }: { technologies: Technology[] }) => {
   const category = technologies[0]?.category || "";
   return (
-    <NavLink to={`/technologies/${category}`}>
-      <h2 className="text-teal-500">{category}</h2>
+    <div>
+      <NavLink to={`/technologies/${category}`} className="text-teal-500">{category}</NavLink>
       {technologies.map((technology) => (
         <TechListItem technology={technology} key={technology.id} />
       ))}
-    </NavLink>
+    </div>
   );
 };
 

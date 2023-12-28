@@ -16,7 +16,6 @@ export default async function updateProfile(newProfile) {
     return [];
   }
   if (data) {
-    console.log(data);
     return data[0] ?? null;
   }
 }
