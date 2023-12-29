@@ -1,4 +1,6 @@
-import { loader as TechLoader } from "./techLoader";
+import ProfileLoader from "./profileLoader";
+import TechLoader from "./techLoader";
 import { loader as TechViewLoader } from "./techViewLoader";
 
-export { TechLoader, TechViewLoader };
+
+export { ProfileLoader, TechLoader, TechViewLoader };

@@ -1,18 +1,16 @@
 import { NavLink, useLoaderData, useLocation } from "react-router-dom";
 import { getProjects } from "../../data/projects.ts";
-import { TECH_CATEGORIE_IMAGE_MAP, TECH_IMAGE_MAP } from "../../data/techImageMap.ts";
-import { Technology, Project, Bullet } from "../../lib/technology.types.ts"
+import {
+  TECH_CATEGORIE_IMAGE_MAP,
+  TECH_IMAGE_MAP,
+} from "../../data/techImageMap.ts";
+import { Bullet, Project, Technology } from "../../lib/technology.types.ts";
 import TechViewLayout from "./Layout.tsx";
 
 interface TechData {
   TECH_CATEGORIES: string[];
   TECHNOLOGIES: Technology[];
 }
-
-// interface ProjectData {
-//   projects: Project[];
-//   technologies: TechData;
-// }
 
 const TechListItem = ({ technology }: { technology: Technology }) => (
   <div>
@@ -25,12 +23,12 @@ const TechListItem = ({ technology }: { technology: Technology }) => (
 const TechGroupList = ({ technologies }: { technologies: Technology[] }) => {
   const category = technologies[0]?.category || "";
   return (
-    <NavLink to={`/technologies/${category}`}>
-      <h2 className="text-teal-500">{category}</h2>
+    <div>
+      <NavLink to={`/technologies/${category}`} className="text-teal-500">{category}</NavLink>
       {technologies.map((technology) => (
-        <TechListItem technology={technology} key={technology.name} />
+        <TechListItem technology={technology} key={technology.id} />
       ))}
-    </NavLink>
+    </div>
   );
 };
 
@@ -43,12 +41,12 @@ const TechCard = () => {
   const imageMap = currentTech ? TECH_IMAGE_MAP : TECH_CATEGORIE_IMAGE_MAP;
 
   const { technologies } = useLoaderData() as { technologies: TechData };
-  // console.log(technologies);
 
-  const [tech] = currentTech ? technologies["TECHNOLOGIES"].filter(
-    (tech: Technology) => tech.name === currentTech
-  ) : [];
-
+  const [tech] = currentTech
+    ? technologies["TECHNOLOGIES"].filter(
+        (tech: Technology) => tech.name === currentTech
+      )
+    : [];
 
   return (
     <div id="tech-brief" className="flex flex-col p-5 border">
@@ -57,7 +55,13 @@ const TechCard = () => {
         <p>{tech?.category}</p>
       </div>
       <div className="flex">
-      <img src={(currentTech ? imageMap[currentTech as keyof typeof imageMap] : imageMap[currentCategory as keyof typeof imageMap]) || ''} />
+        <img
+          src={
+            (currentTech
+              ? imageMap[currentTech as keyof typeof imageMap]
+              : imageMap[currentCategory as keyof typeof imageMap]) || ""
+          }
+        />
         <div>{tech?.description}</div>
       </div>
     </div>
@@ -93,7 +97,7 @@ export default function Page() {
             return (
               <TechGroupList
                 technologies={techGroupArea}
-                key={techCategory[i] + i}
+                key={i}
               />
             );
           }
@@ -105,7 +109,7 @@ export default function Page() {
 
         <div id="tech-projects">
           <h2>Projects</h2>
-          <div id="projects" className="p-5 border m-2">
+          <div id="projects" className="p-5 m-2 border">
             {projects["PROJECTS"]?.map((project) => (
               <ProjectListItem project={project} key={project.name} />
             ))}

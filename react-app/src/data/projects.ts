@@ -3,7 +3,7 @@ import { Project } from "../lib/technology.types";
 const projectOne = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -22,13 +22,13 @@ const projectOne = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectTwo = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -47,13 +47,13 @@ const projectTwo = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectThree = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -72,13 +72,13 @@ const projectThree = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectFour = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -97,14 +97,14 @@ const projectFour = [
                 category: "database"
             },],
         }],
-        },
+    },
 
 ]
 
 const projectFive = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -123,13 +123,13 @@ const projectFive = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectSix = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -148,13 +148,13 @@ const projectSix = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectSeven = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -173,13 +173,13 @@ const projectSeven = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const projectEight = [
     {
         name: "PostgreSQL",
-        images: [{title: "tech", url:"/assets/images/postgres.png"}],
+        images: [{ title: "tech", url: "/assets/images/postgres.png" }],
         // deployment: {},
         urls: {
             live: "https://www.postgresql.org/",
@@ -198,7 +198,7 @@ const projectEight = [
                 category: "database"
             },],
         }],
-        },
+    },
 ]
 
 const PROJECTS = [
@@ -212,10 +212,11 @@ const PROJECTS = [
     ...projectEight
 ] as Project[];
 
-const getProjects = () => { 
+const getProjects = () => {
     return {
         PROJECTS,
-    }};
+    }
+};
 
 export { PROJECTS, getProjects };
 

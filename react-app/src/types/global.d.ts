@@ -46,7 +46,7 @@ declare global {
         bullets: Bullet[]
     }
 
-    interface Bullet { 
+    interface Bullet {
         title: string
         text: string
         category: typeof TECH_CATEGORIES[number];
