@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { supabase } from "../../layouts/root";
+import supabase from "../../data/database";
 
 export default function SignOutButton() {
   const handleClick = async () => {

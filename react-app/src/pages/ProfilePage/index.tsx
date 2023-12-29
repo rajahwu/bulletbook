@@ -1,3 +1,4 @@
+import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 import supabase from "../../data/database.ts";

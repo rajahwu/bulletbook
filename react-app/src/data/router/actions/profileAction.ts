@@ -1,7 +1,8 @@
+import { ActionFunction } from "react-router-dom";
 import supabase from "../../database";
 import { createProfile, updateProfile } from "../../fetchers";
 
-export default async function action({ request, params }) {
+const action: ActionFunction =  async ({ request, params }) => {
   const user = await supabase.auth.getUser();
   if (!user) {
     return [];
@@ -9,14 +10,14 @@ export default async function action({ request, params }) {
     switch (request.method) {
       case "POST": {
         const formData = await request.formData();
-        const username = formData.get("username");
-        const email = formData.get("email");
+        const username = formData.get("username")?.toString() ?? null;
+        const email = formData.get("email")?.toString() ?? null;
         return createProfile({ username, email }) ?? null;
       }
       case "PUT": {
         const formData = await request.formData();
-        const username = formData.get("username");
-        const email = formData.get("email");
+        const username = formData.get("username")?.toString() ?? null;
+        const email = formData.get("email")?.toString() ?? null;
         return updateProfile({username, email}) ?? null;
       }
       case "DELETE": {
@@ -27,4 +28,6 @@ export default async function action({ request, params }) {
       }
     }
   }
+  
+  export default action;
   

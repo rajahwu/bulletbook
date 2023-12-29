@@ -1,6 +1,8 @@
+import { Profile } from "../../lib/user.types";
 import supabase from "../database";
 
-export default async function updateProfile(newProfile) {
+
+export default async function updateProfile(newProfile: Profile) {
     const user = await supabase.auth.getUser();
     if (!user) {
       return [];
