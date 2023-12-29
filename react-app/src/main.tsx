@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  LoaderFunctionArgs,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -32,7 +31,7 @@ const router = createBrowserRouter(
     path="/profile"
     element={<ProfilePage />}
     errorElement={<ErrorPage />}
-    loader={(args: LoaderFunctionArgs<{ id: string }>) => ProfileLoader({ id: args.id })}
+    loader={ProfileLoader}
     action={ProfileAction}
     />
 
