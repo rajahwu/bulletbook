@@ -34,6 +34,7 @@ export default function ProjectsPage() {
                     {/* Display other details of the project */}
                     <p>Description: {project.description}</p>
                     {/* Add more details as needed */}
+                    <Link to={`/projects/edit/${project.id}`}>Edit</Link>
                   </div>
                 ))}
             </div>
