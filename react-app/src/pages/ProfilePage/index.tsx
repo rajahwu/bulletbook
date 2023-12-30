@@ -18,13 +18,10 @@ export default function ProfilePage() {
     fetchSession();
   }, []);
 
-  // console.log(session?.user);
-  // console.log("profile", profile);
-
   return (
     <div className="m-5">
       <h1>Profile Page</h1>
-      <Form method={profile ? "PUT" : "POST"} className="flex flex-col">
+      <Form method={profile ? "PUT" : "POST"} className="flex flex-col" encType="multipart/form-data">
         <div>
           <input
             placeholder="username"
@@ -41,6 +38,15 @@ export default function ProfilePage() {
             name="email"
             id="email"
             defaultValue={session?.user ? session.user.email : ""}
+          />
+        </div>
+        <div>
+          <input
+            placeholder="avatar"
+            type="file"
+            name="avatar"
+            id="avatar"
+            // defaultValue={profile?.avatar ? profile.avatar : ""}
           />
         </div>
         <div>
