@@ -2,15 +2,15 @@ import { v4 as uuidv4 } from "uuid";
 import { Profile } from "../../lib/user.types";
 import supabase from "../database";
 
-export default async function createProfile(newProfileData) {
+export default async function createProfile(formData: FormData) {
   const user = await supabase.auth.getUser();
   if (!user) {
     return [];
   }
 
-  const username = newProfileData.get("username")?.toString() ?? null;
-  const email = newProfileData.get("email")?.toString() ?? null;
-  const avatar = newProfileData.get("avatar") ?? null;
+  const username = formData.get("username")?.toString() ?? null;
+  const email = formData.get("email")?.toString() ?? null;
+  const avatar = formData.get("avatar") ?? null;
 
   const userId = user?.data?.user?.id ?? "";
 

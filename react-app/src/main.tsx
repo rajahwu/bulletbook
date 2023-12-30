@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { ProfileAction } from "./data/router/actions";
+import { ProfileAction, ProjectAction } from "./data/router/actions";
 import {
   ProfileLoader,
   ProjectsLoader,
@@ -62,6 +62,7 @@ const router = createBrowserRouter(
         element={<NewProjectPage />}
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
+        action={ProjectAction}
       />
 
       <Route
