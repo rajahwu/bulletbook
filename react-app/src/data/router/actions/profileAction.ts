@@ -10,10 +10,7 @@ const action: ActionFunction =  async ({ request, params }) => {
     switch (request.method) {
       case "POST": {
         const formData = await request.formData();
-        const username = formData.get("username")?.toString() ?? null;
-        const email = formData.get("email")?.toString() ?? null;
-        const avatar = formData.get("avatar") ?? null;
-        return createProfile({ username, email, avatar }) ?? null;
+        return createProfile(formData) ?? null;
       }
       case "PUT": {
         const formData = await request.formData();

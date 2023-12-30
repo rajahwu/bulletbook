@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { Profile } from "../../lib/user.types";
 import supabase from "../database";
 
@@ -20,7 +20,8 @@ export default async function updateProfile(newProfileData) {
   } as Profile;
 
   if (avatar instanceof File) {
-    const avatarUrl = userId + "/" + uuidv4()
+    const avatarUrl = userId + "/" + uuidv4();
+
     const { data, error } = await supabase.storage
       .from("profiles")
       .upload(avatarUrl, avatar, { upsert: true });
@@ -36,7 +37,7 @@ export default async function updateProfile(newProfileData) {
   const { data, error } = await supabase
     .from("profiles")
     .update(newProfile)
-    .eq("id", user?.data?.user?.id ?? "")
+    .eq("id", userId)
     .select();
   if (error) {
     console.log(error);
