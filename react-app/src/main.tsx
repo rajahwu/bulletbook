@@ -19,6 +19,7 @@ import { Root } from "./layouts";
 import {
   ErrorPage,
   LandingPage,
+  NewProjectPage,
   ProfilePage,
   ProjectsPage,
   TechPage,
@@ -57,12 +58,18 @@ const router = createBrowserRouter(
       />
 
       <Route
+        path="/projects/new"
+        element={<NewProjectPage />}
+        errorElement={<ErrorPage />}
+      />
+
+      <Route
         path="/projects"
         element={<ProjectsPage />}
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
       >
-        <Route path="/projects/:id" element={<ProjectsPage />} />
+        <Route path=":id" element={<ProjectsPage />} />
       </Route>
 
       <Route errorElement={<div>Page Not Found</div>} />
