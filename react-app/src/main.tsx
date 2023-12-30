@@ -10,6 +10,7 @@ import {
 import { ProfileAction } from "./data/router/actions";
 import {
   ProfileLoader,
+  ProjectsLoader,
   TechLoader,
   TechViewLoader,
 } from "./data/router/loaders";
@@ -19,7 +20,7 @@ import {
   ErrorPage,
   LandingPage,
   ProfilePage,
-  ProjectPage,
+  ProjectsPage,
   TechPage,
   TechViewPage,
 } from "./pages";
@@ -57,10 +58,11 @@ const router = createBrowserRouter(
 
       <Route
         path="/projects"
-        element={<ProjectPage />}
+        element={<ProjectsPage />}
         errorElement={<ErrorPage />}
+        loader={ProjectsLoader}
       >
-        <Route path="/projects/:id" element={<ProjectPage />} />
+        <Route path="/projects/:id" element={<ProjectsPage />} />
       </Route>
 
       <Route errorElement={<div>Page Not Found</div>} />

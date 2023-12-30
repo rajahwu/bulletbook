@@ -18,17 +18,17 @@ export default function ProfileDropdown() {
     fetchProfile();
   }, []);
 
-  console.log("profile dropdown", profile);
-
   return (
     <div className="flex items-center mr-3">
       <div className="flex-shrink-0">
         <Link to="/profile">
-          <img
-            className="w-10 h-10 rounded-full"
-            src={profile?.avatar && `https://mncqloseevstasdpqcuh.supabase.co/storage/v1/object/public/profiles/${profile?.avatar}`}
-            alt=""
-          />
+          {profile?.avatar && (
+            <img
+              className="w-10 h-10 rounded-full"
+              src={`https://mncqloseevstasdpqcuh.supabase.co/storage/v1/object/public/profiles/${profile?.avatar}`}
+              alt=""
+            />
+          )}
         </Link>
       </div>
       <div className="ml-3">
