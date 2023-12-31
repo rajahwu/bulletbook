@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       {path === "projects" ? (
         <ul>
           {projects.map((project: Project) => (
-            <li key={project.id}>
+            <li key={project.id} className="m-2 border p-2">
               <Link to={`/projects/${project.id}`}>{project.name}</Link>
             </li>
           ))}
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
               {projects
                 .filter((project) => project.id === id)
                 .map((project) => (
-                  <div key={project.id}>
+                  <div key={project.id} className="m-3 border p-3">
                     <h3>{project.name}</h3>
                     {/* Display other details of the project */}
                     <p>Description: {project.description}</p>

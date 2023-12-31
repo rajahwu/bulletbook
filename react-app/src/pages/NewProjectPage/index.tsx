@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useParams } from "react-router-dom";
+import { Form, Link, useLoaderData, useParams } from "react-router-dom";
 import { Project } from "../../lib/technology.types";
 
 export default function NewProjectPage() {
@@ -35,6 +35,7 @@ export default function NewProjectPage() {
           <input type="submit" />
         </div>
       </Form>
+      <Link to="/projects">Back to Projects</Link>
     </div>
   );
 }

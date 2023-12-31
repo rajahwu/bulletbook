@@ -23,7 +23,7 @@ import {
   ProfilePage,
   ProjectsPage,
   TechPage,
-  TechViewPage,
+  TechViewPage
 } from "./pages";
 
 const router = createBrowserRouter(

@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { type Technology } from "../../lib/technology.types.ts";
 import TechPageLayout from "./Layout";
+
 
 interface TechData {
   TECH_CATEGORIES: string[];
@@ -21,7 +23,7 @@ const TechGroupCard = ({ technologies }: { technologies: Technology[] }) => {
         {category}
       </div>
       {technologies.map((technology) => {
-        return <TechCard technology={technology} key={technology.name} />;
+        return <TechCard technology={technology} key={technology.id} />;
       })}
     </Link>
   );
@@ -32,14 +34,14 @@ export default function Page() {
   return (
     <TechPageLayout>
       {technologies["TECH_CATEGORIES"]?.map(
-        (techCategory: string, i: number) => {
+        (techCategory: string) => {
           const techGroupArea = technologies["TECHNOLOGIES"].filter(
             (tech: Technology) => tech.category === techCategory
           );
           return (
             <TechGroupCard
               technologies={techGroupArea}
-              key={techCategory.concat(i.toString())}
+              key={uuidv4()}
             />
           );
         }

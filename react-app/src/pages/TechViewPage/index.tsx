@@ -1,4 +1,5 @@
 import { NavLink, useLoaderData, useLocation } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { getProjects } from "../../data/projects.ts";
 import {
   TECH_CATEGORIE_IMAGE_MAP,
@@ -97,7 +98,7 @@ export default function Page() {
             return (
               <TechGroupList
                 technologies={techGroupArea}
-                key={i}
+                key={uuidv4()}
               />
             );
           }
@@ -111,7 +112,7 @@ export default function Page() {
           <h2>Projects</h2>
           <div id="projects" className="p-5 m-2 border">
             {projects["PROJECTS"]?.map((project) => (
-              <ProjectListItem project={project} key={project.name} />
+              <ProjectListItem project={project} key={uuidv4()} />
             ))}
           </div>
         </div>
