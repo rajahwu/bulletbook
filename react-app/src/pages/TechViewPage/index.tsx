@@ -112,7 +112,7 @@ export default function Page() {
           <h2>Projects</h2>
           <div id="projects" className="p-5 m-2 border">
             {projects["PROJECTS"]?.map((project) => (
-              <ProjectListItem project={project} key={uuidv4()} />
+              <ProjectListItem project={project} key={uuidv4} />
             ))}
           </div>
         </div>

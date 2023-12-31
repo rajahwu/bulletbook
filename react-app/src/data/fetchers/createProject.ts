@@ -1,4 +1,5 @@
 import supabase from "../database";
+import createProjectUrls from "./createProjectUrls";
 
 export default async function createProject(formData: FormData) {
 
@@ -29,6 +30,7 @@ export default async function createProject(formData: FormData) {
         return [];
     }
     if (data) {
+        createProjectUrls(formData, data[0].id);
         return data[0] ?? null;
     }
 }

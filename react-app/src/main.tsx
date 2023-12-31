@@ -11,8 +11,7 @@ import { ProfileAction, ProjectAction } from "./data/router/actions";
 import {
   ProfileLoader,
   ProjectsLoader,
-  TechLoader,
-  TechViewLoader,
+  TechLoader
 } from "./data/router/loaders";
 import "./index.css";
 import { Root } from "./layouts";
@@ -54,7 +53,7 @@ const router = createBrowserRouter(
         path="/technologies/*"
         element={<TechViewPage />}
         errorElement={<ErrorPage />}
-        loader={TechViewLoader}
+        loader={TechLoader}
       />
 
       <Route

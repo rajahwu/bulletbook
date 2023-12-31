@@ -1,5 +1,7 @@
-import { getTechnologies } from "../../fetchers";
+import { getProjects, getTechnologies } from "../../fetchers";
 
 export default async function loader() {
-   return getTechnologies();
+  const technologies = await getTechnologies();
+  const projects = await getProjects();
+  return { technologies, projects };
 }

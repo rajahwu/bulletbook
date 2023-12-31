@@ -15,22 +15,46 @@ export default function NewProjectPage() {
         className="flex flex-col"
         encType="multipart/form-data"
       >
-        <div>
-          <input
-            placeholder="Project Title"
-            type="text"
-            name="name"
-            id="name"
-            defaultValue={project?.name ? project.name : ""}
-          />
-        </div>
-        <div>
-          <textarea
-            name="description"
-            id="description"
-            defaultValue={project?.description ? project.description : ""}
-          ></textarea>
-        </div>
+        <fieldset>
+          <legend>Project Details</legend>
+          <div>
+            <input
+              placeholder="Project Title"
+              type="text"
+              name="name"
+              id="name"
+              defaultValue={project?.name ? project.name : ""}
+            />
+          </div>
+          <div>
+            <textarea
+              name="description"
+              id="description"
+              defaultValue={project?.description ? project.description : ""}
+            ></textarea>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Project Links</legend>
+          <div>
+            <input
+              placeholder="Live Link"
+              type="text"
+              name="live"
+              id="live"
+              // defaultValue={project?.link ? project.link : ""}
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Github Link"
+              type="text"
+              name="github"
+              id="github"
+              // defaultValue={project?.link ? project.link : ""}
+            />
+          </div>
+        </fieldset>
         <div>
           <input type="submit" />
         </div>
