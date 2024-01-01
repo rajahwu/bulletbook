@@ -40,11 +40,17 @@ interface ProjectURLs {
     github: string
 }
 
+interface ProjectImage {
+    id: string
+    url: string
+}
+
 interface Project {
     id?: string
     name: string
     images: ResourceURL[]
     project_urls: ProjectURLs[]
+    project_images: ProjectImage[]
     description: string
     deployment?: Deployment
     bullets: Bullet[]
