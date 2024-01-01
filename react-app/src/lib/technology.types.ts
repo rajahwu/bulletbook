@@ -35,14 +35,16 @@ interface Deployment {
     url: string
 }
 
+interface ProjectURLs {
+    live: string
+    github: string
+}
+
 interface Project {
     id?: string
     name: string
     images: ResourceURL[]
-    urls: {
-        live: string
-        github: string
-    }
+    project_urls: ProjectURLs[]
     description: string
     deployment?: Deployment
     bullets: Bullet[]

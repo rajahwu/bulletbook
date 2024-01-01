@@ -9,7 +9,11 @@ export default function DeleteProjectPage() {
       navigate(`/projects`);
   };
   return (
-    <Form method="DELETE" className="flex flex-col" onSubmit={handleSubmit}>
+    <Form 
+    method="DELETE" 
+    className="flex flex-col" 
+    // onSubmit={handleSubmit}
+    >
       <fieldset>
         <legend>Are you sure you want to delete this project?</legend>
         <div>

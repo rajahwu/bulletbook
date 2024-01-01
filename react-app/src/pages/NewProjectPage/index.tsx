@@ -16,7 +16,7 @@ export default function NewProjectPage() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    projectId ? navigate(`/projects/${projectId}`) : navigate(`/projects`);
+    // projectId ? navigate(`/projects/${projectId}`) : navigate(`/projects`);
   };
 
   return (
@@ -26,7 +26,7 @@ export default function NewProjectPage() {
         method={projectId ? "PUT" : "POST"}
         className="flex flex-col"
         encType="multipart/form-data"
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
         <input
           type="hidden"
@@ -90,9 +90,7 @@ export default function NewProjectPage() {
             <input
               type="file"
               name="image"
-              id="image"
-              accept="image/*"
-              multiple
+              id="images"
             />
           </div>
         </fieldset>
