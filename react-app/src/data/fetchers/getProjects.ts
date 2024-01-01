@@ -16,7 +16,6 @@ export default async function getProjects() {
         return [];
     }
     if (data) {
-        console.log(data);
         return data;
     }
 }

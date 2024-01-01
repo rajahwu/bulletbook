@@ -9,8 +9,6 @@ export default function ProjectsPage() {
   const path =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
 
-    console.log("projects", projects);
-
   return (
     <div>
       <h1>Project Page</h1>
@@ -36,7 +34,10 @@ export default function ProjectsPage() {
                     {/* Display other details of the project */}
                     <p>Description: {project.description}</p>
                     {/* Add more details as needed */}
+                    <div>
                     <Link to={`/projects/edit/${project.id}`}>Edit</Link>
+                    <Link to={`/projects/delete/${project.id}`}>Delete</Link>
+                    </div>
                   </div>
                 ))}
             </div>

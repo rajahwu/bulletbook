@@ -1,8 +1,8 @@
 import { ActionFunction } from "react-router-dom";
 import supabase from "../../database";
-import { createProject, updateProject } from "../../fetchers";
+import { createProject, deleteProject, updateProject } from "../../fetchers";
 
-const action: ActionFunction =  async ({ request, params }) => {
+const action: ActionFunction =  async ({ request }) => {
   const user = await supabase.auth.getUser();
   if (!user) {
     return [];
@@ -17,7 +17,8 @@ const action: ActionFunction =  async ({ request, params }) => {
         return updateProject(formData) ?? null;
       }
       case "DELETE": {
-        return () => console.log("DELETE " + params.id);
+        const formData = await request.formData();
+        return deleteProject(formData) ?? null;
       }
       default: {
         throw new Response("", { status: 405 });

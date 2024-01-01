@@ -16,6 +16,7 @@ import {
 import "./index.css";
 import { Root } from "./layouts";
 import {
+  DeleteProjectPage,
   ErrorPage,
   LandingPage,
   NewProjectPage,
@@ -72,6 +73,14 @@ const router = createBrowserRouter(
         action={ProjectAction}
       />
 
+      <Route 
+      path="/projects/delete/:projectId"
+      element={<DeleteProjectPage />}
+      errorElement={<ErrorPage />}
+      loader={ProjectsLoader}
+      action={ProjectAction}
+      />
+
       <Route
         path="/projects"
         element={<ProjectsPage />}
@@ -79,7 +88,7 @@ const router = createBrowserRouter(
         loader={ProjectsLoader}
       >
         <Route path=":id" element={<ProjectsPage />} />
-      </Route>
+      R</Route>
 
       <Route errorElement={<div>Page Not Found</div>} />
     </Route>
