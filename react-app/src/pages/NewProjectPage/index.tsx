@@ -2,19 +2,25 @@ import { Form, Link, useLoaderData, useParams } from "react-router-dom";
 import { Project } from "../../lib/technology.types";
 
 export default function NewProjectPage() {
-  const { id } = useParams<{ id: string }>();
+  const { projectId } = useParams<{ projectId: string }>();
   const projects = useLoaderData() as Project[];
 
-  const project = projects.find((project) => project.id === id);
+  const project = projects.find((project) => project.id === projectId);
 
   return (
     <div className="m-5">
-      <h1>{id ? "Edit Project" : "New Project"} Page</h1>
+      <h1>{projectId ? "Edit Project" : "New Project"} Page</h1>
       <Form
-        method={id ? "PUT" : "POST"}
+        method={projectId ? "PUT" : "POST"}
         className="flex flex-col"
         encType="multipart/form-data"
       >
+        <input
+          type="hidden"
+          name="projectId"
+          id="projectId"
+          value={projectId}
+        />
         <fieldset>
           <legend>Project Details</legend>
           <div>
@@ -42,7 +48,11 @@ export default function NewProjectPage() {
               type="text"
               name="live"
               id="live"
-              // defaultValue={project?.link ? project.link : ""}
+              defaultValue={
+                project?.project_urls[0]?.live
+                  ? project?.project_urls[0]?.live
+                  : ""
+              }
             />
           </div>
           <div>
@@ -51,7 +61,11 @@ export default function NewProjectPage() {
               type="text"
               name="github"
               id="github"
-              // defaultValue={project?.link ? project.link : ""}
+              defaultValue={
+                project?.project_urls[0]?.github
+                  ? project?.project_urls[0]?.github
+                  : ""
+              }
             />
           </div>
         </fieldset>

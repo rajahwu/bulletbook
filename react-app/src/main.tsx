@@ -62,13 +62,14 @@ const router = createBrowserRouter(
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
         action={ProjectAction}
-      />
+        />
 
       <Route
-        path="/projects/edit/:id"
+        path="/projects/edit/:projectId"
         element={<NewProjectPage />}
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
+        action={ProjectAction}
       />
 
       <Route
