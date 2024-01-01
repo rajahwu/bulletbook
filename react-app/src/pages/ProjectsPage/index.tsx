@@ -9,6 +9,8 @@ export default function ProjectsPage() {
   const path =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
 
+    console.log("projects", projects);
+
   return (
     <div>
       <h1>Project Page</h1>
