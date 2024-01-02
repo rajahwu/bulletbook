@@ -1,19 +1,19 @@
 import { ActionFunction } from "react-router-dom";
-import supabase from "../../database";
+// import supabase from "../../database";
 import { createProjectBullet, deleteProjectBullet, updateProjectBullet } from "../../fetchers";
 
 const action: ActionFunction =  async ({ request }) => {
-  const user = await supabase.auth.getUser();
-  if (!user) {
-    return [];
-  }
+ 
     switch (request.method) {
       case "POST": {
         const formData = await request.formData();
+        console.log("bullet action", formData);
+        console.log("bullet action request", request);
         return createProjectBullet(formData) ?? null;
       }
       case "PUT": {
         const formData = await request.formData();
+        console.log("bullet action", request);
         return updateProjectBullet(formData) ?? null;
       }
       case "DELETE": {

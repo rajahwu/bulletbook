@@ -10,7 +10,8 @@ import {
 import {
   ProfileAction,
   ProjectAction,
-  ProjectImageAction,
+  ProjectBulletAction,
+  ProjectImageAction
 } from "./data/router/actions";
 import {
   ProfileLoader,
@@ -108,18 +109,20 @@ const router = createBrowserRouter(
         element={<ProjectsPage />}
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
-      >
+        >
         <Route path=":id" element={<ProjectsPage />} />
       </Route>
 
       <Route 
-      path="/projects/:projectId/bullets" 
+      path="/bullets/:projectId/" 
       element={<ProjectBulletPage />} 
+      action={ProjectBulletAction}
       />
 
       <Route 
-      path="/projects/:projectId/bullets/edit" 
+      path="/bullets/:projectId/add" 
       element={<AddProjectBulletPage />} 
+      action={ProjectBulletAction}
       />
 
       <Route errorElement={<div>Page Not Found</div>} />

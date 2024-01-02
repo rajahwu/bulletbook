@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import supabase from "../database";
 import createProjectImage from "./createProjectImage";
 import updateProjectUrls from "./updateProjectUrls";
@@ -39,6 +40,7 @@ export default async function updateProject(formData: FormData) {
             formData.append("userId", userId);
             createProjectImage(formData)
         }
-        return data[0] ?? null;
+        return redirect("/projects/" + projectId);
+        // return data[0] ?? null;
 }
 }

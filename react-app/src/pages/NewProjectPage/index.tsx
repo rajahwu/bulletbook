@@ -85,7 +85,7 @@ export default function NewProjectPage() {
           </div>
         </fieldset>
         <hr />
-        <Link to={`/projects/${project?.id}/bullets/edit`}>Add Project Bullets</Link>
+        <Link to={`/bullets/${project?.id}/add`}>Add Project Bullets</Link>
         <hr />
         <div>
           <input type="submit" />

@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import supabase from "../database";
 import createProjectImage from "./createProjectImage";
 import createProjectUrls from "./createProjectUrls";
@@ -8,7 +9,7 @@ export default async function createProject(formData: FormData) {
     if (!user) {
         return [];
     }
-    
+
     const userId = user?.data?.user?.id ?? "";
 
     const name = formData.get("name")?.toString() ?? null;
@@ -35,7 +36,11 @@ export default async function createProject(formData: FormData) {
     if (data) {
         const project = data[0];
         createProjectUrls(formData, project.id);
-        createProjectImage({ userId, image: image as File, imageId: image.id, projectId: project.id })
-        return data[0] ?? null;
+        const image = formData.get("image") as File;
+        if (image.size > 0) {
+            createProjectImage(formData);
+        }
+        return redirect("/projects/" + project.id);
+        // return data[0] ?? null;
     }
 }

@@ -9,7 +9,7 @@ export default async function getProjects() {
 
     const { data, error } = await supabase
         .from('projects')
-        .select(`*, project_urls(live, github), project_images(id, url), project_bullets(id, text, title)`)
+        .select(`*, project_urls(live, github), project_images(id, url), project_bullets(*)`)
         .eq('user_id', userId)
     if (error) {
         console.log(error);

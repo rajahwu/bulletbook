@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import supabase from "../database";
 
 export default async function deleteProject(formData: FormData) {
@@ -12,6 +13,7 @@ export default async function deleteProject(formData: FormData) {
         return false;
     }
     if (data) {
-        return data[0] ?? null;
+        return redirect("/projects");
+        // return data[0] ?? null;
     }
 }

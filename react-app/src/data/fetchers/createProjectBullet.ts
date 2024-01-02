@@ -1,4 +1,3 @@
-import supabase from "../database";
 
 export default async function createProjectBullet(formData: FormData) {
 
@@ -25,16 +24,18 @@ export default async function createProjectBullet(formData: FormData) {
         nextSteps,
     }
 
-    const { data, error } = await supabase
-        .from("project_bullets")
-        .insert(newBullet)
-        .select();
+    return newBullet;
 
-    if (error) {
-        console.log(error);
-        return [];
-    }
-    if (data) {
-        return data[0] ?? null;
-    }
+    // const { data, error } = await supabase
+    //     .from("project_bullets")
+    //     .insert(newBullet)
+    //     .select();
+
+    // if (error) {
+    //     console.log(error);
+    //     return [];
+    // }
+    // if (data) {
+    //     return data[0] ?? null;
+    // }
 }
