@@ -6,6 +6,7 @@ export default function ProjectsPage() {
   const projects = useLoaderData() as Project[];
   const location = useLocation();
   const { id } = useParams<{ id: string }>();
+  console.log("projects", projects);
 
   // console.log("project", projects.find((project) => project.id === id));
   const path =
@@ -36,18 +37,30 @@ export default function ProjectsPage() {
                     {/* Display other details of the project */}
                     <p>Description: {project.description}</p>
                     {/* Add more details as needed */}
-                   {project.project_images.length && (
-                   <div className="">
-                      <h4>Images</h4>
-                      {project.project_images.map((image) => (
-                        <ProjectImage key={image.id} image={image} projectId={project?.id ?? ""} />
+                    {project.project_images.length && (
+                      <div className="">
+                        <h4>Images</h4>
+                        {project.project_images.map((image) => (
+                          <ProjectImage
+                            key={image.id}
+                            image={image}
+                            projectId={project?.id ?? ""}
+                          />
+                        ))}
+                      </div>
+                    )}
+                    <h4>Bullets</h4>
+                    <ul>
+                      {project.project_bullets.map((bullet) => (
+                        <li key={bullet.id}>
+                          <p>{bullet.title}</p>
+                          <p>{bullet.text}</p>
+                        </li>
                       ))}
-                    </div>
-                    )
-                    }
+                    </ul>
                     <div>
-                    <Link to={`/projects/edit/${project.id}`}>Edit</Link>
-                    <Link to={`/projects/delete/${project.id}`}>Delete</Link>
+                      <Link to={`/projects/edit/${project.id}`}>Edit</Link>
+                      <Link to={`/projects/delete/${project.id}`}>Delete</Link>
                     </div>
                   </div>
                 ))}

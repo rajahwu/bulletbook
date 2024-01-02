@@ -43,6 +43,7 @@ import supabase from "../database";
         console.log(error);
       }
       if (data) {
+        console.log(data[0]);
         return data[0] ?? null;
       }
     }

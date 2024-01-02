@@ -53,14 +53,15 @@ interface Project {
     project_images: ProjectImage[]
     description: string
     deployment?: Deployment
-    bullets: Bullet[]
+    project_bullets: Bullet[]
 }
 
 interface Bullet {
+    id?: string
     title: string
     text: string
-    category: typeof TECH_CATEGORIES[number];
-    technologies: Technology[]
+    category?: typeof TECH_CATEGORIES[number];
+    technologies?: Technology[]
 }
 
 export type { Bullet, Deployment, IconType, Project, ProjectImage, ProjectURLs, Reference, ResourceURL, TechData, Technology };

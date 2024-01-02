@@ -87,13 +87,10 @@ export default function NewProjectPage() {
         <fieldset>
           <legend>Project Images</legend>
           <div>
-            <input
-              type="file"
-              name="image"
-              id="images"
-            />
+            <input type="file" name="image" id="images" />
           </div>
         </fieldset>
+        <hr />
         <div>
           <input type="submit" />
         </div>

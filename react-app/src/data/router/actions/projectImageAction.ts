@@ -10,6 +10,7 @@ const action: ActionFunction =  async ({ request }) => {
     switch (request.method) {
       case "PUT": {
         const formData = await request.formData();
+        console.log("update project image", formData)
         return updateProjectImage(formData) ?? null;
       }
       case "DELETE": {
