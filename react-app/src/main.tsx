@@ -20,11 +20,13 @@ import {
 import "./index.css";
 import { Root } from "./layouts";
 import {
+  AddProjectBulletPage,
   DeleteProjectPage,
   ErrorPage,
   LandingPage,
   NewProjectPage,
   ProfilePage,
+  ProjectBulletPage,
   ProjectsPage,
   TechPage,
   TechViewPage,
@@ -109,6 +111,16 @@ const router = createBrowserRouter(
       >
         <Route path=":id" element={<ProjectsPage />} />
       </Route>
+
+      <Route 
+      path="/projects/:projectId/bullets" 
+      element={<ProjectBulletPage />} 
+      />
+
+      <Route 
+      path="/projects/:projectId/bullets/edit" 
+      element={<AddProjectBulletPage />} 
+      />
 
       <Route errorElement={<div>Page Not Found</div>} />
     </Route>
