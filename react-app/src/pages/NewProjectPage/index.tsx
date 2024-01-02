@@ -2,22 +2,16 @@ import {
   Form,
   Link,
   useLoaderData,
-  useNavigate,
   useParams,
 } from "react-router-dom";
 import { Project } from "../../lib/technology.types";
 
 export default function NewProjectPage() {
-  const navigate = useNavigate();
   const { projectId } = useParams<{ projectId: string }>();
   const projects = useLoaderData() as Project[];
 
   const project = projects.find((project) => project.id === projectId);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // projectId ? navigate(`/projects/${projectId}`) : navigate(`/projects`);
-  };
 
   return (
     <div className="m-5">
