@@ -63,7 +63,7 @@ interface Bullet {
     technologies: Technology[]
 }
 
-export type { Bullet, Deployment, IconType, Project, ResourceURL, TechData, Technology };
+export type { Bullet, Deployment, IconType, Project, ProjectImage, ProjectURLs, Reference, ResourceURL, TechData, Technology };
 
     export { TECH_CATEGORIES };
 

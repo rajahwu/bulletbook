@@ -7,11 +7,15 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { ProfileAction, ProjectAction } from "./data/router/actions";
+import {
+  ProfileAction,
+  ProjectAction,
+  ProjectImageAction,
+} from "./data/router/actions";
 import {
   ProfileLoader,
   ProjectsLoader,
-  TechLoader
+  TechLoader,
 } from "./data/router/loaders";
 import "./index.css";
 import { Root } from "./layouts";
@@ -23,7 +27,7 @@ import {
   ProfilePage,
   ProjectsPage,
   TechPage,
-  TechViewPage
+  TechViewPage,
 } from "./pages";
 
 const router = createBrowserRouter(
@@ -63,7 +67,7 @@ const router = createBrowserRouter(
         errorElement={<ErrorPage />}
         loader={ProjectsLoader}
         action={ProjectAction}
-        />
+      />
 
       <Route
         path="/projects/edit/:projectId"
@@ -73,12 +77,28 @@ const router = createBrowserRouter(
         action={ProjectAction}
       />
 
-      <Route 
-      path="/projects/delete/:projectId"
-      element={<DeleteProjectPage />}
-      errorElement={<ErrorPage />}
-      loader={ProjectsLoader}
-      action={ProjectAction}
+      <Route
+        path="/projects/delete/:projectId"
+        element={<DeleteProjectPage />}
+        errorElement={<ErrorPage />}
+        loader={ProjectsLoader}
+        action={ProjectAction}
+      />
+
+      <Route
+        path="/projects/:projectId/images/edit/:imageId"
+        element={<NewProjectPage />}
+        errorElement={<ErrorPage />}
+        loader={ProjectsLoader}
+        action={ProjectImageAction}
+      />
+      
+      <Route
+        path="/projects/:projectId/images/delete/:imageId"
+        element={<NewProjectPage />}
+        errorElement={<ErrorPage />}
+        loader={ProjectsLoader}
+        action={ProjectImageAction}
       />
 
       <Route
@@ -88,7 +108,7 @@ const router = createBrowserRouter(
         loader={ProjectsLoader}
       >
         <Route path=":id" element={<ProjectsPage />} />
-      R</Route>
+      </Route>
 
       <Route errorElement={<div>Page Not Found</div>} />
     </Route>

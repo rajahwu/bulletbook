@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
 import supabase from "../database";
+import createProjectImage from "./createProjectImage";
 import createProjectUrls from "./createProjectUrls";
 
 export default async function createProject(formData: FormData) {
@@ -7,8 +7,8 @@ export default async function createProject(formData: FormData) {
     const user = await supabase.auth.getUser();
     if (!user) {
         return [];
-
     }
+    
     const userId = user?.data?.user?.id ?? "";
 
     const name = formData.get("name")?.toString() ?? null;
@@ -35,31 +35,7 @@ export default async function createProject(formData: FormData) {
     if (data) {
         const project = data[0];
         createProjectUrls(formData, project.id);
-
-        if (image instanceof File) {
-            const imageUrl = userId + "/" + project.id + "/" + uuidv4();
-            const { data, error } = await supabase.storage
-                .from("project_images")
-                .upload(imageUrl, image, { upsert: true });
-            if (error) {
-                console.log(error);
-                return [];
-            }
-            if (data) {
-                const { data, error } = await supabase
-                    .from("project_images")
-                    .insert({ project_id: project.id, url: imageUrl })
-                    .select();
-                if (error) {
-                    console.log(error);
-                    return [];
-                }
-                if (data) {
-                    console.log(data);
-                }
-            }
-        }
-
+        createProjectImage({ userId, image: image as File, imageId: image.id, projectId: project.id })
         return data[0] ?? null;
     }
 }

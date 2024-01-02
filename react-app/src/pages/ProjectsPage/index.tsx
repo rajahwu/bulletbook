@@ -1,4 +1,5 @@
 import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
+import { ProjectImage } from "../../components";
 import { Project } from "../../lib/technology.types";
 
 export default function ProjectsPage() {
@@ -6,7 +7,7 @@ export default function ProjectsPage() {
   const location = useLocation();
   const { id } = useParams<{ id: string }>();
 
-  console.log("project", projects.find((project) => project.id === id));
+  // console.log("project", projects.find((project) => project.id === id));
   const path =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
 
@@ -36,16 +37,10 @@ export default function ProjectsPage() {
                     <p>Description: {project.description}</p>
                     {/* Add more details as needed */}
                    {project.project_images.length && (
-                   <div>
+                   <div className="">
                       <h4>Images</h4>
                       {project.project_images.map((image) => (
-                        <div key={image.id}>
-                          <img
-                            src={`https://mncqloseevstasdpqcuh.supabase.co/storage/v1/object/public/project_images/${image.url}`}
-                            alt={image.image_url}
-                            className="w-1/4"
-                          />
-                        </div>
+                        <ProjectImage key={image.id} image={image} projectId={project?.id ?? ""} />
                       ))}
                     </div>
                     )
