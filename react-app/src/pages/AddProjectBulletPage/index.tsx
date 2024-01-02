@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
 import { Form, useParams } from "react-router-dom";
+import { getTechnologies } from "../../data/fetchers";
+import { TechData } from "../../lib/technology.types";
 
 export default function AddProjectBulletPage() {
-    const { projectId } = useParams<{projectId: string}>()
+  const [technologies, setTechnologies] = useState<TechData>({
+    TECH_CATEGORIES: [],
+    TECHNOLOGIES: [],
+  });
+
+  useEffect(() => {
+    getTechnologies().then((technologies) => {
+      setTechnologies(
+        technologies ?? { TECH_CATEGORIES: [], TECHNOLOGIES: [] }
+      );
+    });
+  }, []);
+
+  // console.log(technologies);
+  const { projectId } = useParams<{ projectId: string }>();
+  const categories = technologies.TECH_CATEGORIES;
+  const techs = technologies.TECHNOLOGIES;
+  console.log(categories);
+  console.log(techs);
   return (
     <div>
       <h1>Add Project Bullets</h1>
@@ -74,6 +95,22 @@ export default function AddProjectBulletPage() {
         <div className="flex flex-col">
           <label htmlFor="projectBullet">Final Bullet</label>
           <textarea id="projectBullet" name="projectBullet"></textarea>
+        </div>
+          <h4>Technologies</h4>
+        <div className="flex">
+          {categories.map((category) => (
+            <div className="p-2 border m-2">
+              <h3>{category}</h3>
+              {techs
+                .filter((tech) => tech.category === category)
+                .map((tech) => (
+                  <div className="m-2">
+                    <input type="checkbox" name="techs" value={tech.id} />
+                    <label htmlFor={tech.name}>{tech.name}</label>
+                  </div>
+                ))}
+            </div>
+          ))}
         </div>
         <div>
           <button type="submit">Submit</button>

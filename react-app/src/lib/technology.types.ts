@@ -1,5 +1,5 @@
 import React from "react";
-const TECH_CATEGORIES = ["database", "orm", "backend_framework", "frontend_library", "ui_ux", "data_management", "dev_team", "third_party_api"] as const;
+// const TECH_CATEGORIES = ["database", "orm", "backend_framework", "frontend_library", "ui_ux", "data_management", "dev_team", "third_party_api"] as const;
 
 type IconType = React.ComponentType | string;
 
@@ -13,14 +13,13 @@ interface Reference {
     url: string;
 }
 
-
 interface Technology {
     id?: string
     name: string
     icon: IconType
     description: string
     references: Reference[]
-    category: typeof TECH_CATEGORIES[number];
+    category: string;
     images?: ResourceURL[]
     keywords?: string[]
 }
