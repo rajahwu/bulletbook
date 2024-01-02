@@ -25,23 +25,11 @@ export default function AddProjectBulletPage() {
   return (
     <div>
       <h1>Add Project Bullets</h1>
-      <Form
-        method="PUT"
-        // onSubmit={(e) => {
-        //   e.preventDefault();
-        //   const formData = new FormData(e.target as HTMLFormElement);
-        //   // const data = Object.fromEntries(formData.entries());
-        //   submit(formData, {
-        //     method: "PUT",
-        //     action: `/bullets/${projectId}/add`,
-        //   })
-        //   // console.log(data);
-        // }}
-      >
-        <input type="hidden" name="projectId" value={projectId} />
+      <Form method="POST">
+        <input type="hidden" name="project_id" value={projectId} />
         <div>
           <label htmlFor="actionVerb">Powerful Action Verb</label>
-          <input type="text" id="actionVerb" name="actionVerb" />
+          <input type="text" id="actionVerb" name="action_verb" />
         </div>
         <div className="flex flex-col">
           <label htmlFor="feature">
@@ -97,7 +85,7 @@ export default function AddProjectBulletPage() {
         </div>
         <div className="flex flex-col">
           <label htmlFor="projectBullet">Final Bullet</label>
-          <textarea id="projectBullet" name="projectBullet"></textarea>
+          <textarea id="projectBullet" name="content"></textarea>
         </div>
         <h4>Technologies</h4>
         <div className="flex">

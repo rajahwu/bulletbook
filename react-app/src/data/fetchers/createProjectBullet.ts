@@ -1,41 +1,68 @@
+import { redirect } from "react-router-dom";
+import supabase from "../database";
 
 export default async function createProjectBullet(formData: FormData) {
 
-    const projctId = formData.get("projectId") as string;
-    const actionVerb = formData.get("actionVerb") as string;
-    const feature = formData.get("feature") as string;
-    const benefit = formData.get("benefit") as string;
-    const challenge = formData.get("challenge") as string;
-    const solution = formData.get("solution") as string;
-    const result = formData.get("result") as string;
-    const lessonLearned = formData.get("learned") as string;
-    const nextSteps = formData.get("next") as string;
+    const data = Object.fromEntries(formData.entries());
 
-
-    const newBullet = {
-        projctId,
-        actionVerb,
+    const {
+        project_id,
+        action_verb,
+        content,
         feature,
         benefit,
         challenge,
         solution,
         result,
-        lessonLearned,
-        nextSteps,
+        learned,
+        next
+    } = data;
+
+    const newBullet = {
+        project_id,
+        action_verb,
+        content,
+        feature,
+        benefit,
+        challenge,
+        solution,
+        result,
+        learned,
+        next
     }
 
-    return newBullet;
+    const techKeys = Array.from(formData.keys()).filter(key => key.startsWith('tech-'));
+    const techValues = techKeys.map(key => formData.get(key));
 
-    // const { data, error } = await supabase
-    //     .from("project_bullets")
-    //     .insert(newBullet)
-    //     .select();
+    const { data: insertBulletData, error: insertBulletError } = await supabase
+        .from("project_bullets")
+        .insert(newBullet)
+        .select();
 
-    // if (error) {
-    //     console.log(error);
-    //     return [];
-    // }
-    // if (data) {
-    //     return data[0] ?? null;
-    // }
+    if (insertBulletError) {
+        console.log(insertBulletError);
+        return [];
+    }
+
+    if (insertBulletData) {
+        const bulletId = insertBulletData[0]?.id;
+        const techData = techValues.map(techId => ({ tech_id: techId, bullet_id: bulletId }));
+
+        techData.forEach(async (tech) => {
+            const { data: insertTechData, error: insertTechError } = await supabase
+                .from("bullet_techs")
+                .insert(tech)
+                .select();
+            if (insertTechError) {
+                console.log(insertTechError);
+                return [];
+            }
+            if (insertTechData) {
+                console.log(insertTechData);
+            }
+        });
+
+        return redirect("/projects/" + newBullet.project_id);
+        // return insertBulletData[0] ?? null;
+    }
 }
