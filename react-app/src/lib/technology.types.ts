@@ -1,6 +1,4 @@
 import React from "react";
-// const TECH_CATEGORIES = ["database", "orm", "backend_framework", "frontend_library", "ui_ux", "data_management", "dev_team", "third_party_api"] as const;
-
 type IconType = React.ComponentType | string;
 
 interface ResourceURL {
@@ -57,13 +55,19 @@ interface Project {
 
 interface Bullet {
     id?: string
-    title: string
-    text: string
-    category?: typeof TECH_CATEGORIES[number];
+    project_id: string
+    content: string
+    category: string;
+    action_verb: string
+    feature: string
+    benefit: string
+    challenge?: string
+    solution?: string
+    result?: string
+    learned?: string
+    next?: string
     technologies?: Technology[]
+
 }
 
 export type { Bullet, Deployment, IconType, Project, ProjectImage, ProjectURLs, Reference, ResourceURL, TechData, Technology };
-
-    export { TECH_CATEGORIES };
-

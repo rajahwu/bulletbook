@@ -51,10 +51,10 @@ export default function ProjectsPage() {
                     )}
                     <h4>Bullets</h4>
                     <ul>
-                      {project.project_bullets?.map((bullet) => (
-                        <li key={bullet.id}>
-                          <p>{bullet?.title}</p>
-                          <p>{bullet?.text}</p>
+                      {project.project_bullets?.map((bullet, i) => (
+                        <li className="flex" key={bullet.id}>
+                          <p>Bullet {String(i + 1)}:</p>
+                          <p>{bullet?.content}</p>
                         </li>
                       ))}
                     </ul>
