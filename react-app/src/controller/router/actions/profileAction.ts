@@ -10,15 +10,11 @@ const action: ActionFunction =  async ({ request, params }) => {
     switch (request.method) {
       case "POST": {
         const formData = await request.formData();
-        const username = formData.get("username")?.toString() ?? null;
-        const email = formData.get("email")?.toString() ?? null;
-        return createProfile({ username, email }) ?? null;
+        return createProfile(formData) ?? null;
       }
       case "PUT": {
         const formData = await request.formData();
-        const username = formData.get("username")?.toString() ?? null;
-        const email = formData.get("email")?.toString() ?? null;
-        return updateProfile({username, email}) ?? null;
+        return updateProfile(formData) ?? null;
       }
       case "DELETE": {
         return () => console.log("DELETE " + params.id);

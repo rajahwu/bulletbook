@@ -1,7 +1,7 @@
-import SiteHeader from "./SiteHeader"
+import ProjectImage from "./ProjectImage"
 import SiteFooter from "./SiteFooter"
+import SiteHeader from "./SiteHeader"
 
 export {
-    SiteHeader,
-    SiteFooter
+    ProjectImage, SiteFooter, SiteHeader
 }

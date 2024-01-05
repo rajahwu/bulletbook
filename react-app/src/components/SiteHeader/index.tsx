@@ -8,6 +8,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
       <ul>
         <Link to="/home">Home</Link>
         <Link to="/technologies">Technologies</Link>
+        <Link to="/projects">Projects</Link>
       </ul>
       {session && <ProfileDropdown />}
     </div>

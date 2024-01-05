@@ -4,7 +4,7 @@ import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { SiteFooter, SiteHeader } from "../components";
-import supabase from "../data/database.ts";
+import supabase from "../controller/database.ts";
 
 export default function Root() {
   const [session, setSession] = useState<Session | null>(null);
