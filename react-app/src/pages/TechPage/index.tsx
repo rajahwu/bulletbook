@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { type Technology } from "../../lib/technology.types.ts";
 import TechPageLayout from "./Layout";
 
@@ -41,7 +40,7 @@ export default function Page() {
           return (
             <TechGroupCard
               technologies={techGroupArea}
-              key={uuidv4()}
+              key={techCategory}
             />
           );
         }

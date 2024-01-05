@@ -1,9 +1,5 @@
-import {
-  Form,
-  Link,
-  useLoaderData,
-  useParams,
-} from "react-router-dom";
+import { Form, Link, useLoaderData, useParams } from "react-router-dom";
+import { ProjectImage } from "../../components";
 import { Project } from "../../lib/technology.types";
 
 export default function NewProjectPage() {
@@ -12,7 +8,6 @@ export default function NewProjectPage() {
 
   const project = projects.find((project) => project.id === projectId);
 
-
   return (
     <div className="m-5">
       <h1>{projectId ? "Edit Project" : "New Project"} Page</h1>
@@ -20,7 +15,6 @@ export default function NewProjectPage() {
         method={projectId ? "PUT" : "POST"}
         className="flex flex-col"
         encType="multipart/form-data"
-        // onSubmit={handleSubmit}
       >
         <input
           type="hidden"
@@ -80,7 +74,22 @@ export default function NewProjectPage() {
         <hr />
         <fieldset>
           <legend>Project Images</legend>
+          {project && project.project_images.length > 0 && (
+            <div className="">
+              <h4>Images</h4>
+              <div className="flex">
+                {project?.project_images.map((image) => (
+                  <ProjectImage
+                    key={image.id}
+                    image={image}
+                    projectId={project?.id ?? ""}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
           <div>
+            <label htmlFor="images">Add Images</label>
             <input type="file" name="image" id="images" />
           </div>
         </fieldset>
