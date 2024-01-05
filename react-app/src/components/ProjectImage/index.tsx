@@ -6,46 +6,6 @@ interface ProjectImage {
   url: string;
 }
 
-// const updateProjectImage = async ({
-//   newImage,
-//   url,
-// }: {
-//   newImage: File;
-//   url: string;
-// }) => {
-//   const { data, error } = await supabase.storage
-//     .from("project_images")
-//     .update(url, newImage, {
-//       cacheControl: "3600",
-//       upsert: true,
-//     });
-//   return { data, error };
-// };
-
-//  const deleteProjectImage = async ({ url, id }: ProjectImage) => {
-//   console.log({ url, id });
-//   const { data, error } = await supabase.storage
-//     .from("project_images")
-//     .remove([url]);
-//   if (error) {
-//     console.log(error);
-//   }
-
-//   if (data) {
-//     const { data, error } = await supabase
-//       .from("project_images")
-//       .delete()
-//       .eq("id", id);
-//     if (error) {
-//       console.log(error);
-//     }
-//     if (data) {
-//       console.log(data);
-//     }
-//   }
-//   return { data, error };
-// };
-
 export default function ProjectImage({
   image,
   projectId,
@@ -54,7 +14,7 @@ export default function ProjectImage({
   projectId: string;
 }) {
   const location = useLocation();
-  const [shown, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   return (
     projectId && (
       <div className="flex" key={image.id}>
@@ -64,7 +24,7 @@ export default function ProjectImage({
           className="w-1/4"
         />
         {!location.pathname.includes("edit") && (
-          <button onClick={() => setShowForm(!shown)}>show</button>
+          <button onClick={() => setShowForm(!showForm)}>show</button>
         )}
         <div className="flex flex-col justify-center">
           {location.pathname.includes("edit") ? (
@@ -102,7 +62,10 @@ export default function ProjectImage({
               </div>
             </>
           ) : (
-            <div id="image_form" style={{ display: shown ? "flex" : "none" }}>
+            <div
+              id="image_form"
+              style={{ display: showForm ? "flex" : "none" }}
+            >
               <Form
                 method="PUT"
                 className="flex flex-col"
