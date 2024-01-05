@@ -1,4 +1,3 @@
-import { Project } from "../lib/technology.types";
 
 const projectOne = [
     {
@@ -210,7 +209,7 @@ const PROJECTS = [
     ...projectSix,
     ...projectSeven,
     ...projectEight
-] as Project[];
+];
 
 const getProjects = () => {
     return {
