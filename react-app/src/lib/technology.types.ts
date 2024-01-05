@@ -14,9 +14,9 @@ interface Reference {
 interface Technology {
     id?: string
     name: string
-    icon: IconType
+    icon: IconType | string
     description: string
-    references: Reference[]
+    references?: Reference[]
     category: string;
     images?: ResourceURL[]
     keywords?: string[]

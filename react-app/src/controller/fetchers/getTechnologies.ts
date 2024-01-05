@@ -11,17 +11,18 @@ const { data, error } = await supabase
         .order("name", { ascending: true })
     if (error) {  
         console.log(error);
-        return [];
+        return { TECH_CATEGORIES: [], TECHNOLOGIES: [] };
       }
     if (data) {
-        const categories = new Set();
+        const categories = new Set<string>();
         data.forEach((tech: Technology) => {
             categories.add(tech.category);
         });
 
+
         return {
-            TECH_CATEGORIES: [...categories],
-            TECHNOLOGIES: data
+            TECH_CATEGORIES: Array.from(categories),
+            TECHNOLOGIES: data ?? []
         };
     }
 }

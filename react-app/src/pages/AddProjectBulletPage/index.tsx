@@ -11,16 +11,15 @@ export default function AddProjectBulletPage() {
 
   useEffect(() => {
     getTechnologies().then((technologies) => {
-      setTechnologies(
-        technologies ?? { TECH_CATEGORIES: [], TECHNOLOGIES: [] }
-      );
+      if (technologies) setTechnologies(technologies);
     });
   }, []);
 
   const { projectId } = useParams<{ projectId: string }>();
   const categories = technologies.TECH_CATEGORIES;
   const techs = technologies.TECHNOLOGIES;
-  // const submit = useSubmit();
+
+  console.log(technologies);
 
   return (
     <div>

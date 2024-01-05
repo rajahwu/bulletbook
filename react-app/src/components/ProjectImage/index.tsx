@@ -1,55 +1,49 @@
 import { Form } from "react-router-dom";
-import supabase from "../../controller/database";
 
 interface ProjectImage {
   id?: string;
   url: string;
 }
 
-const updateProjectImage = async ({
-  newImage,
-  url,
-}: {
-  newImage: File;
-  url: string;
-}) => {
-  const { data, error } = await supabase.storage
-    .from("project_images")
-    .update(url, newImage, {
-      cacheControl: "3600",
-      upsert: true,
-    });
-  return { data, error };
-};
+// const updateProjectImage = async ({
+//   newImage,
+//   url,
+// }: {
+//   newImage: File;
+//   url: string;
+// }) => {
+//   const { data, error } = await supabase.storage
+//     .from("project_images")
+//     .update(url, newImage, {
+//       cacheControl: "3600",
+//       upsert: true,
+//     });
+//   return { data, error };
+// };
 
-const deleteProjectImage = async ({ url, id }: ProjectImage) => {
-  console.log({ url, id });
-  const { data, error } = await supabase.storage
-    .from("project_images")
-    .remove([url]);
-  if (error) {
-    console.log(error);
-  }
+//  const deleteProjectImage = async ({ url, id }: ProjectImage) => {
+//   console.log({ url, id });
+//   const { data, error } = await supabase.storage
+//     .from("project_images")
+//     .remove([url]);
+//   if (error) {
+//     console.log(error);
+//   }
 
-  if (data) {
-    const { data, error } = await supabase
-      .from("project_images")
-      .delete()
-      .eq("id", id);
-    if (error) {
-      console.log(error);
-    }
-    if (data) {
-      console.log(data);
-    }
-  }
-  return { data, error };
-};
-
-const handleDelete = async (projectImage: ProjectImage) => {
-  const res = await deleteProjectImage(projectImage);
-  console.log("delete", res);
-};
+//   if (data) {
+//     const { data, error } = await supabase
+//       .from("project_images")
+//       .delete()
+//       .eq("id", id);
+//     if (error) {
+//       console.log(error);
+//     }
+//     if (data) {
+//       console.log(data);
+//     }
+//   }
+//   return { data, error };
+// };
 
 export default function ProjectImage({
   image,
