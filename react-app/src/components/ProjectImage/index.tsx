@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom";
-import supabase from "../../data/database";
+import supabase from "../../controller/database";
 
 interface ProjectImage {
   id?: string;

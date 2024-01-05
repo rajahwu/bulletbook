@@ -2,7 +2,7 @@ import { Link, NavLink, useLoaderData, useLocation } from "react-router-dom";
 import {
   TECH_CATEGORIE_IMAGE_MAP,
   TECH_IMAGE_MAP,
-} from "../../data/techImageMap.ts";
+} from "../../controller/techImageMap.ts";
 import { Bullet, Project, Technology } from "../../lib/technology.types.ts";
 import TechViewLayout from "./Layout.tsx";
 

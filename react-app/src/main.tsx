@@ -12,12 +12,12 @@ import {
   ProjectAction,
   ProjectBulletAction,
   ProjectImageAction
-} from "./data/router/actions";
+} from "./controller/router/actions";
 import {
   ProfileLoader,
   ProjectsLoader,
   TechLoader,
-} from "./data/router/loaders";
+} from "./controller/router/loaders";
 import "./index.css";
 import { Root } from "./layouts";
 import {

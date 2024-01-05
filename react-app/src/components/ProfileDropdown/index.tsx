@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProfile } from "../../data/fetchers";
+import { getProfile } from "../../controller/fetchers";
 import SignOutButton from "../SignOutButton";
 
 interface Profile {

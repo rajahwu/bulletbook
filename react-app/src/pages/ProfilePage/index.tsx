@@ -1,7 +1,7 @@
 import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
-import supabase from "../../data/database.ts";
+import supabase from "../../controller/database.ts";
 import { Profile } from "../../lib/user.types.ts";
 
 export default function ProfilePage() {

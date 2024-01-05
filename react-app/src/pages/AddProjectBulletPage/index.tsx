@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, useParams } from "react-router-dom";
-import { getTechnologies } from "../../data/fetchers";
+import { getTechnologies } from "../../controller/fetchers";
 import { TechData } from "../../lib/technology.types";
 
 export default function AddProjectBulletPage() {
