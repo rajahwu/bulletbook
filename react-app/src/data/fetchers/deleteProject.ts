@@ -14,6 +14,5 @@ export default async function deleteProject(formData: FormData) {
     }
     if (data) {
         return redirect("/projects");
-        // return data[0] ?? null;
     }
 }

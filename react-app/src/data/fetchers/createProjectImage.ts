@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import supabase from "../database";
 
@@ -25,7 +26,7 @@ export default async function createProjectImage(formData: FormData) {
                 return [];
             }
             if (data) {
-                console.log(data);
+                return redirect("/projects/" + projectId);
             }
         }
 }

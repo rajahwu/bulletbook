@@ -6,9 +6,7 @@ export default function ProjectsPage() {
   const projects = useLoaderData() as Project[];
   const location = useLocation();
   const { id } = useParams<{ id: string }>();
-  console.log("projects", projects);
 
-  // console.log("project", projects.find((project) => project.id === id));
   const path =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
 
