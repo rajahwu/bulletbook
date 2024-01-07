@@ -4,7 +4,7 @@
 
 ![login](assets/bulletbook_login.png)
 
-## technoligies
+## technologies
 
 ![postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
