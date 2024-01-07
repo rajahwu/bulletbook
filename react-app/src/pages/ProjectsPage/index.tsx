@@ -35,7 +35,7 @@ export default function ProjectsPage() {
                     {/* Display other details of the project */}
                     <p>Description: {project.description}</p>
                     {/* Add more details as needed */}
-                    {project.project_images.length && (
+                    {project.project_images.length > 0 && (
                       <div className="">
                         <h4>Images</h4>
                         {project.project_images.map((image) => (

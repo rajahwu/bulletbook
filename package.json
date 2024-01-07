@@ -4,9 +4,13 @@
   "type": "module",
   "devDependencies": {
     "bun-types": "latest",
+    "prisma": "^5.7.1",
     "supabase": "^1.123.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.1"
   }
 }
