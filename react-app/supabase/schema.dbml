@@ -9,7 +9,8 @@ Table profiles as users {
     id uuid [pk]
     username text
     email text
-    avatar text
+    avatar text [note: 'URL or file path pointing to the user\'s avatar image']
+    note: "table 'profiles' contain user's profile information"
 }
 
 Table technologies {
@@ -28,34 +29,43 @@ Table tech_references {
 }
 
 Table projects {
-    id int [pk, increment]
-    user_id int [ref: > users.id]
-    name varchar
+    id uuid [pk]
+    user_id int [ref: > profiles.id]
+    name text
     description text
 }
 
 Table project_images {
-    id int [pk, increment]
-    project_id int [ref: > projects.id]
-    url varchar
+    id uuid [pk]
+    project_id uuid [ref: > projects.id]
+    url text
+    user_id uuid [ref: > profiles.id]
 }
 
 Table project_urls {
-    id int [pk, increment]
-    project_id int [ref: > projects.id]
-    live varchar
-    github varchar
+    id uuid [pk]
+    project_id uuid [ref: > projects.id]
+    live text
+    github text
 }
 
 Table projcet_bullets {
-    id int [pk, increment]
-    project_id int [ref: > projects.id]
-    title varchar
-    text varchar
+    id uuid [pk]
+    project_id uuid [ref: > projects.id]
+    action_verb text [note: 'verb describing the action associated with the project bullet']
+    content text [note: 'content related to the project bullet']
+    feature text [note: 'feature associated with the project bullet']
+    benefit text [note: 'benefits derived from the project bullet']
+    challenge text [note: 'challenges encountered in the project related to the bullet']
+    solution text [note: 'solutions implemented to address challenges']
+    result text [note: 'results or outcomes associated with the project bullet']
+    learned text [note: 'results or outcomes associated with the project bullet']
+    next text [note: 'next steps or actions planned based on the project bullet']
 }
 
 Table bullet_techs {
-    id int [pk, increment]
-    bullet_id int [ref: > projcet_bullets.id]
-    tech_id int [ref: > technologies.id]
+    id uuid [pk]
+    bullet_id uuid [ref: > projcet_bullets.id]
+    tech_id uuid [ref: > technologies.id]
+    note: "table 'bullet_techs' links records from table 'project_bullets' to records on table 'technologies'"
 }

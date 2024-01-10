@@ -39,3 +39,7 @@ bun install
 [postgresql://postgres:postgres@localhost:54322/postgres]( http://localhost:54323)
 
 This project was created using `bun init` in bun v1.0.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+
+## Database Schema
+
+![database schem](assets/database_schema.png)
